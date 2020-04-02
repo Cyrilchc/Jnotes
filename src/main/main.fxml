@@ -9,6 +9,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -88,7 +89,9 @@
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                            <children>
                               <Button fx:id="btSave" layoutX="184.0" layoutY="7.0" mnemonicParsing="false" onAction="#SaveContent" prefHeight="26.0" prefWidth="104.0" text="Sauvegarder" AnchorPane.rightAnchor="5.0" />
-                              <Button fx:id="btReset" layoutX="137.0" layoutY="7.0" mnemonicParsing="false" onAction="#ResetContent" prefHeight="26.0" prefWidth="104.0" text="Réinitialiser" AnchorPane.rightAnchor="115.0" />
+                              <Button fx:id="btReset" layoutX="670.0" layoutY="7.0" mnemonicParsing="false" onAction="#ResetContent" prefHeight="26.0" prefWidth="104.0" text="Réinitialiser" AnchorPane.rightAnchor="116.0" />
+                              <TextField fx:id="searchTextArea" layoutX="14.0" layoutY="7.0" prefHeight="26.0" prefWidth="248.0" />
+                              <Button fx:id="btSearch" layoutX="270.0" layoutY="7.0" mnemonicParsing="false" onAction="#SearchContent" prefHeight="26.0" prefWidth="104.0" text="Rechercher" />
                            </children>
                         </AnchorPane>
                         <HTMLEditor fx:id="content" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="200.0" prefWidth="506.0" />

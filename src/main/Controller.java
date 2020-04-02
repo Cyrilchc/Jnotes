@@ -66,6 +66,12 @@ public class Controller implements Initializable {
     @FXML
     private SplitPane splitPane;
 
+    @FXML
+    private TextField searchTextArea;
+
+    @FXML
+    private Button btSearch;
+
     /**
      * Lancement de la fenêtre, affiche les sections
      *
@@ -124,7 +130,7 @@ public class Controller implements Initializable {
             bt.setOnAction(actionEvent -> {
                 clearPageButtons();
                 content.setHtmlText("");
-                generatePageButton(section);
+                generatePageButtons(section);
                 SingletonTrade.getInstance().setCurrentSection(section);
                 Stage stage = (Stage) content.getScene().getWindow();
                 stage.setTitle("Jnotes - " + section.getNom());
@@ -151,9 +157,12 @@ public class Controller implements Initializable {
             delSection.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    connect.deleteSection(section.getId());
-                    connect.deletePagesFromSection(section.getId());
-                    resetEverything();
+                    displayYesNo("Vous êtes sur le point de supprimer la section " + section.getNom() + ".\nToutes les pages de la section seront perdues.\nVoulez-vous continuer ?", "Supprimer une section");
+                    if (SingletonTrade.getInstance().isYesno()) {
+                        connect.deleteSection(section.getId());
+                        connect.deletePagesFromSection(section.getId());
+                        resetEverything();
+                    }
                 }
             });
 
@@ -178,15 +187,10 @@ public class Controller implements Initializable {
      *
      * @param section
      */
-    private void generatePageButton(Section section) {
+    private void generatePageButtons(Section section) {
         List<Page> pages = connect.getAllPagesFromSection(section.getId());
         for (Page page : pages) {
-            Button bt = new Button();
-            bt.getStyleClass().add("btMenu");
-            bt.setPrefHeight(50);
-            bt.setMinHeight(50);
-            bt.setUserData(page);
-            bt.setText(page.getNom());
+            Button bt = generatePageButton(page);
             bt.setOnAction(actionEvent -> {
                 content.setHtmlText("");
                 content.setUserData(page);
@@ -216,8 +220,77 @@ public class Controller implements Initializable {
             delPage.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    connect.deletePage(page.getId());
+                    displayYesNo("Vous êtes sur le point de supprimer la page " + page.getNom() + ".\nTout son contenu sera perdu.\nVoulez-vous continuer ?", "Supprimer une page");
+                    if (SingletonTrade.getInstance().isYesno()) {
+                        connect.deletePage(page.getId());
+                        resetPage(section);
+                    }
+                }
+            });
+
+            /**
+             * Evènement modification du nom de la page
+             */
+            editPage.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    editPageName(page);
                     resetPage(section);
+                }
+            });
+
+            bt.setPrefWidth(vbPage.getPrefWidth());
+            vbPage.getChildren().addAll(bt);
+        }
+    }
+
+    /**
+     * Recherche des pages dont le contenu correspond à la recherche
+     *
+     * @param event
+     */
+    @FXML
+    void SearchContent(ActionEvent event) {
+        ((Stage) vbPage.getScene().getWindow()).setTitle("Jnotes - Recherche");
+        clearPage();
+        List<Page> pages = connect.getPageLike(searchTextArea.getText());
+        for (Page page : pages) {
+            Section section = connect.getSectionById(page.getSection());
+            Button bt = generatePageButton(page);
+            bt.setOnAction(actionEvent -> {
+                content.setHtmlText("");
+                content.setUserData(page);
+                content.setHtmlText(page.getContent());
+                Stage stage = (Stage) content.getScene().getWindow();
+                stage.setTitle("Jnotes - Recherche - " + page.getNom());
+            });
+
+            ContextMenu cm = new ContextMenu();
+            MenuItem delPage = new MenuItem("Supprimer cette page");
+            MenuItem editPage = new MenuItem("Modifier le nom de cette page");
+            cm.getItems().addAll(editPage, delPage);
+
+            /**
+             * évènmenet menu contextuel d'un bouton page
+             */
+            bt.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+                @Override
+                public void handle(ContextMenuEvent event) {
+                    cm.show(bt, event.getScreenX(), event.getScreenY());
+                }
+            });
+
+            /**
+             * évènement suppression de la page
+             */
+            delPage.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    displayYesNo("Vous êtes sur le point de supprimer la page " + page.getNom() + ".\nTout son contenu sera perdu.\nVoulez-vous continuer ?", "Supprimer une page");
+                    if (SingletonTrade.getInstance().isYesno()) {
+                        connect.deletePage(page.getId());
+                        resetPage(section);
+                    }
                 }
             });
 
@@ -314,7 +387,7 @@ public class Controller implements Initializable {
             if (retour != null && !retour.isEmpty()) {
                 if (connect.createPage(retour, CurrentSection.getId())) {
                     clearPageButtons();
-                    generatePageButton(CurrentSection);
+                    generatePageButtons(CurrentSection);
                     SingletonTrade.getInstance().setRetour("");
                 }
             } else {
@@ -433,9 +506,32 @@ public class Controller implements Initializable {
     }
 
     /**
+     * Affiche une boite de dialogue Oui / Non
+     *
+     * @param message
+     * @param title
+     */
+    private void displayYesNo(String message, String title) {
+        try {
+            yesnoController ctrl = new yesnoController(message);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("yesnoDialog.fxml"));
+            loader.setController(ctrl);
+            Parent dialog = loader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle(title);
+            stage.setScene(new Scene(dialog, 600, 200));
+            stage.showAndWait();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    /**
      * Remet à zéro l'affichage
      */
     private void resetEverything() {
+        SingletonTrade.getInstance().setYesno(false);
         clearPageButtons();
         clearSectionButtons();
         content.setHtmlText("");
@@ -448,10 +544,34 @@ public class Controller implements Initializable {
      * Remet à zéro le panneau page et le contenu
      */
     private void resetPage(Section section) {
+        SingletonTrade.getInstance().setYesno(false);
         clearPageButtons();
         content.setHtmlText("");
-        generatePageButton(section);
+        generatePageButtons(section);
         Stage stage = (Stage) content.getScene().getWindow();
         stage.setTitle("Jnotes - " + section.getNom());
+    }
+
+    /**
+     * Vide le panneau page
+     */
+    private void clearPage() {
+        clearPageButtons();
+        content.setHtmlText("");
+    }
+
+    /**
+     * Génère un bouton pour la page
+     * @param page
+     * @return
+     */
+    private Button generatePageButton(Page page){
+        Button bt = new Button();
+        bt.getStyleClass().add("btMenu");
+        bt.setPrefHeight(50);
+        bt.setMinHeight(50);
+        bt.setUserData(page);
+        bt.setText(page.getNom());
+        return bt;
     }
 }

@@ -10,6 +10,15 @@ public class SingletonTrade {
 
     private String retour;
     private Section CurrentSection;
+    private boolean yesno;
+
+    public boolean isYesno() {
+        return yesno;
+    }
+
+    public void setYesno(boolean yesno) {
+        this.yesno = yesno;
+    }
 
     public Section getCurrentSection() {
         return CurrentSection;

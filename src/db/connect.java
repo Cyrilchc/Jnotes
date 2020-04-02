@@ -16,14 +16,8 @@ public class connect {
     public void connect() {
         con = null;
         try {
-            //Path p = new Paths("db/notes");
-            // db parameters
             String url = "jdbc:sqlite:src/db/notes";
-            // create a connection to the database
             con = DriverManager.getConnection(url);
-
-            System.out.println("Connection to SQLite has been established.");
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -83,6 +77,42 @@ public class connect {
                                 resultSet.getInt("section_id")
                         )
                 );
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return pages;
+    }
+
+    /**
+     * Obtient la liste des pages qui correspondent à la recherche
+     *
+     * @param searchString
+     * @return
+     */
+    public List<Page> getPageLike(String searchString) {
+        List<Page> pages = new ArrayList<>();
+        if (con == null) {
+            connect();
+        }
+
+        String query = "select page_id, page_nom, page_content, section_id from page where page_content like ?;";
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setString(1, "%" + searchString + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                pages.add(
+                        new Page(
+                                resultSet.getInt("page_id"),
+                                resultSet.getString("page_nom"),
+                                resultSet.getString("page_content"),
+                                resultSet.getInt("section_id")
+                        )
+                );
+
+                System.out.println(resultSet.getString("page_nom"));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -258,6 +288,7 @@ public class connect {
 
     /**
      * Modifie le nom de la section
+     *
      * @param section
      * @param nom
      * @return
@@ -337,6 +368,7 @@ public class connect {
 
     /**
      * Modifie le nom de la page
+     *
      * @param page
      * @param nom
      * @return
