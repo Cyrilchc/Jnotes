@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Jnotes/db/notes" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jnotes/db/notes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Jnotes/main/Controller$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jnotes/main/Controller$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Jnotes/main/Controller$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jnotes/main/Controller$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Jnotes/main/Controller$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jnotes/main/Controller$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Jnotes/main/Controller$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jnotes/main/Controller$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Jnotes/main/Controller$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jnotes/main/Controller$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Jnotes/main/Controller$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jnotes/main/Controller$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Jnotes/main/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jnotes/main/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Jnotes/main/UserInputController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jnotes/main/UserInputController.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,8 +77,12 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectId" id="1ZuOHl9BVTyx1LR3f5j5tEtXMyn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
@@ -91,7 +108,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -223,7 +240,8 @@
       <workItem from="1585777218909" duration="4923000" />
       <workItem from="1585816687633" duration="5877000" />
       <workItem from="1585826739324" duration="8900000" />
-      <workItem from="1585835702229" duration="7362000" />
+      <workItem from="1585835702229" duration="7867000" />
+      <workItem from="1585843895898" duration="20000" />
     </task>
     <servers />
   </component>
@@ -233,6 +251,10 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+      <path value="$PROJECT_DIR$/Jnotes" />
+    </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
     <state x="424" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585727380717">
@@ -255,26 +277,26 @@
       <screen x="0" y="32" width="1920" height="1048" />
     </state>
     <state width="443" height="567" key="DebuggerActiveHint/0.32.1920.1048@0.32.1920.1048" timestamp="1585745163604" />
-    <state x="748" y="309" key="FileChooserDialogImpl" timestamp="1585822605228">
+    <state x="748" y="309" key="FileChooserDialogImpl" timestamp="1585843845861">
       <screen x="0" y="32" width="1920" height="1048" />
     </state>
-    <state x="748" y="309" key="FileChooserDialogImpl/0.32.1920.1048@0.32.1920.1048" timestamp="1585822605228" />
-    <state width="1870" height="271" key="GridCell.Tab.0.bottom" timestamp="1585841767276">
+    <state x="748" y="309" key="FileChooserDialogImpl/0.32.1920.1048@0.32.1920.1048" timestamp="1585843845861" />
+    <state width="1870" height="271" key="GridCell.Tab.0.bottom" timestamp="1585843850852">
       <screen x="0" y="32" width="1920" height="1048" />
     </state>
-    <state width="1870" height="271" key="GridCell.Tab.0.bottom/0.32.1920.1048@0.32.1920.1048" timestamp="1585841767276" />
-    <state width="1870" height="271" key="GridCell.Tab.0.center" timestamp="1585841767276">
+    <state width="1870" height="271" key="GridCell.Tab.0.bottom/0.32.1920.1048@0.32.1920.1048" timestamp="1585843850852" />
+    <state width="1870" height="271" key="GridCell.Tab.0.center" timestamp="1585843850851">
       <screen x="0" y="32" width="1920" height="1048" />
     </state>
-    <state width="1870" height="271" key="GridCell.Tab.0.center/0.32.1920.1048@0.32.1920.1048" timestamp="1585841767276" />
-    <state width="1870" height="271" key="GridCell.Tab.0.left" timestamp="1585841767275">
+    <state width="1870" height="271" key="GridCell.Tab.0.center/0.32.1920.1048@0.32.1920.1048" timestamp="1585843850851" />
+    <state width="1870" height="271" key="GridCell.Tab.0.left" timestamp="1585843850850">
       <screen x="0" y="32" width="1920" height="1048" />
     </state>
-    <state width="1870" height="271" key="GridCell.Tab.0.left/0.32.1920.1048@0.32.1920.1048" timestamp="1585841767275" />
-    <state width="1870" height="271" key="GridCell.Tab.0.right" timestamp="1585841767276">
+    <state width="1870" height="271" key="GridCell.Tab.0.left/0.32.1920.1048@0.32.1920.1048" timestamp="1585843850850" />
+    <state width="1870" height="271" key="GridCell.Tab.0.right" timestamp="1585843850851">
       <screen x="0" y="32" width="1920" height="1048" />
     </state>
-    <state width="1870" height="271" key="GridCell.Tab.0.right/0.32.1920.1048@0.32.1920.1048" timestamp="1585841767276" />
+    <state width="1870" height="271" key="GridCell.Tab.0.right/0.32.1920.1048@0.32.1920.1048" timestamp="1585843850851" />
     <state width="1870" height="223" key="GridCell.Tab.1.bottom" timestamp="1585835647651">
       <screen x="0" y="32" width="1920" height="1048" />
     </state>
@@ -291,14 +313,14 @@
       <screen x="0" y="32" width="1920" height="1048" />
     </state>
     <state width="1870" height="223" key="GridCell.Tab.1.right/0.32.1920.1048@0.32.1920.1048" timestamp="1585835647650" />
-    <state x="448" y="129" key="SettingsEditor" timestamp="1585818467755">
+    <state x="448" y="129" key="SettingsEditor" timestamp="1585843914606">
       <screen x="0" y="32" width="1920" height="1048" />
     </state>
-    <state x="448" y="129" key="SettingsEditor/0.32.1920.1048@0.32.1920.1048" timestamp="1585818467755" />
-    <state x="622" y="379" key="com.intellij.ide.util.TipDialog" timestamp="1585835702092">
+    <state x="448" y="129" key="SettingsEditor/0.32.1920.1048@0.32.1920.1048" timestamp="1585843914606" />
+    <state x="622" y="379" key="com.intellij.ide.util.TipDialog" timestamp="1585843895803">
       <screen x="0" y="32" width="1920" height="1048" />
     </state>
-    <state x="622" y="379" key="com.intellij.ide.util.TipDialog/0.32.1920.1048@0.32.1920.1048" timestamp="1585835702092" />
+    <state x="622" y="379" key="com.intellij.ide.util.TipDialog/0.32.1920.1048@0.32.1920.1048" timestamp="1585843895803" />
     <state x="624" y="253" key="run.anything.popup" timestamp="1585829694463">
       <screen x="0" y="32" width="1920" height="1048" />
     </state>
